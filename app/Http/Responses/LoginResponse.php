@@ -10,13 +10,14 @@ class LoginResponse implements LoginResponseContract
 {
     public function toResponse($request)
     {
-        $role = Auth::user()->role;
+        $user = Auth::user();
 
-        return match ($role) {
-            'direzione' => redirect('/dashboard-direzione'),
-            'insegnante' => redirect('/dashboard-insegnante'),
-            'studente'   => redirect('/dashboard-studente'),
-            default      => redirect('/'),
-        };
+        if ($user->role === 'direzione') {
+            return redirect()->intended('/dashboard-direzione');
+        } elseif ($user->role === 'insegnante') {
+            return redirect()->intended('/dashboard-insegnante');
+        } else {
+            return redirect()->intended('/dashboard-studente');
+        }
     }
 }
