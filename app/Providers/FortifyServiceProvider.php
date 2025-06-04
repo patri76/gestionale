@@ -9,6 +9,10 @@ use Laravel\Fortify\Contracts\RegisterViewResponse;
 use Laravel\Fortify\Contracts\LoginResponse;
 use Laravel\Fortify\Contracts\RegisterResponse;
 
+use Illuminate\Cache\RateLimiting\Limit;
+use Illuminate\Support\Facades\RateLimiter;
+use Illuminate\Http\Request;
+
 use App\Http\Responses\Auth\LoginViewResponse as CustomLoginViewResponse;
 use App\Http\Responses\Auth\RegisterViewResponse as CustomRegisterViewResponse;
 use App\Http\Responses\LoginResponse as CustomLoginResponse;
@@ -32,6 +36,13 @@ class FortifyServiceProvider extends ServiceProvider
 
     public function boot(): void
     {
+        // Definisci il rate limiter 'login' per limitare i tentativi
+        RateLimiter::for('login', function (Request $request) {
+            $email = (string) $request->email;
+
+            return Limit::perMinute(5)->by($email.$request->ip());
+        });
+
         Fortify::createUsersUsing(CreateNewUser::class);
         Fortify::updateUserProfileInformationUsing(UpdateUserProfileInformation::class);
         Fortify::updateUserPasswordsUsing(UpdateUserPassword::class);
