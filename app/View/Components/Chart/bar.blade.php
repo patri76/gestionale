@@ -1,13 +1,13 @@
 @props(['labels', 'data', 'title'])
 
 <div class="bg-white p-4 rounded-2xl shadow">
-    <h2 class="text-xl font-semibold mb-4 text-gray-700">{{ $title }}</h2>
-    <canvas id="{{ \Str::slug($title, '_') }}"></canvas>
+    <h2 class="text-lg font-semibold text-gray-700 mb-4">{{ $title }}</h2>
+    <canvas id="chart-{{ Str::slug($title, '-') }}" class="w-full h-64"></canvas>
 </div>
 
 <script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const ctx = document.getElementById("{{ \Str::slug($title, '_') }}").getContext("2d");
+    document.addEventListener('DOMContentLoaded', function () {
+        const ctx = document.getElementById("chart-{{ Str::slug($title, '-') }}").getContext('2d');
         new Chart(ctx, {
             type: 'bar',
             data: {
@@ -26,7 +26,7 @@
                     y: {
                         beginAtZero: true,
                         ticks: {
-                            precision: 0
+                            stepSize: 1
                         }
                     }
                 }

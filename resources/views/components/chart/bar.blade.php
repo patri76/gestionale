@@ -1,4 +1,5 @@
-@props(['labels', 'data', 'title'])
+@@props(['labels' => [], 'data' => [], 'title' => ''])
+
 
 <div class="bg-white p-4 rounded-2xl shadow">
     <h2 class="text-lg font-semibold text-gray-700 mb-4">{{ $title }}</h2>

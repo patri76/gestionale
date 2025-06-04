@@ -1,8 +1,4 @@
-@extends('layouts.app')
-
-@section('title', 'Dashboard Direzione')
-
-@section('content')
+<x-layout-dashboard>
 <div class="container mx-auto px-4 py-6">
 
     {{-- 🔴 Bottone Logout in alto a destra --}}
@@ -55,4 +51,4 @@
     </div>
 
 </div>
-@endsection
+</x-layout-dashboard>
