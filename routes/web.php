@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DirezioneController;
+use App\Http\Controllers\IscrizioneController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -24,3 +25,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/direzione/statistiche', fn() => 'Pagina Statistiche')->name('direzione.statistiche');
     Route::get('/direzione/certificati-liberi', fn() => 'Pagina Certificati Liberi')->name('direzione.certificati-liberi');
 });
+
+Route::get('/iscrizioni/nuova', [IscrizioneController::class, 'create'])->name('iscrizioni.create');
+Route::post('/iscrizioni', [IscrizioneController::class, 'store'])->name('iscrizioni.store');

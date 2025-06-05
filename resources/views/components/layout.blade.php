@@ -48,7 +48,7 @@
             <div>
                 <a href="/" class="navbar-brand text-white fw-bold d-flex align-items-center">
                     @php use Illuminate\Support\Facades\Route; @endphp
-                    @if (!in_array(Route::currentRouteName(), ['login', 'register']))
+                    @if (Route::currentRouteName() === 'home')
                         <img src="{{ asset('img/ilcentro_logo-1.jpg') }}" alt="Logo Il Centro" style="height: 40px;" class="me-2">
                     @endif
                     Il Centro
@@ -66,14 +66,10 @@
         {{ $slot }}
     </main>
 
+    {{-- Bootstrap Bundle --}}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-        {{-- Bootstrap Bundle --}}
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
-        {{-- Chart.js per i grafici --}}
-        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    </body>
-    </html>
-
+    {{-- Chart.js per i grafici --}}
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </body>
 </html>
