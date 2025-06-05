@@ -1,9 +1,8 @@
-@@props(['labels' => [], 'data' => [], 'title' => ''])
+@props(['labels', 'data', 'title'])
 
-
-<div class="bg-white p-4 rounded-2xl shadow">
-    <h2 class="text-lg font-semibold text-gray-700 mb-4">{{ $title }}</h2>
-    <canvas id="chart-{{ Str::slug($title, '-') }}" class="w-full h-64"></canvas>
+<div class="bg-white p-3 rounded shadow">
+    <h2 class="text-base font-semibold text-gray-700 mb-3">{{ $title }}</h2>
+    <canvas id="chart-{{ Str::slug($title, '-') }}" class="w-full" style="height: 200px;"></canvas>
 </div>
 
 <script>
