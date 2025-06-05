@@ -7,10 +7,17 @@
 
     {{-- Include i file generati da Vite --}}
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-</head>
-<body class="bg-gray-100 text-gray-900 min-h-screen antialiased">
 
+    {{-- Bootstrap Icons (per icona logout) --}}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+</head>
+<body style="background-color: #008CBA; min-height: 100vh;">
+
+    {{-- Contenuto delle pagine che usano <x-layout-dashboard> --}}
     {{ $slot }}
 
+    {{-- Script aggiuntivi (es. grafici, dropdown) --}}
+    @stack('scripts')
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </body>
 </html>

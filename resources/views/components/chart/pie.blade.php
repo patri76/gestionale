@@ -5,6 +5,7 @@
     <canvas id="chart-{{ Str::slug($title, '-') }}" class="w-full h-64"></canvas>
 </div>
 
+@push('scripts')
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         const ctx = document.getElementById("chart-{{ Str::slug($title, '-') }}").getContext('2d');
@@ -16,35 +17,22 @@
                     label: '{{ $title }}',
                     data: {!! json_encode($data) !!},
                     backgroundColor: [
-                        'rgba(0, 140, 186, 0.6)',
-                        'rgba(255, 99, 132, 0.6)',
-                        'rgba(255, 206, 86, 0.6)',
-                        'rgba(75, 192, 192, 0.6)',
-                        'rgba(153, 102, 255, 0.6)',
-                        'rgba(255, 159, 64, 0.6)',
-                        'rgba(54, 162, 235, 0.6)'
+                        'rgba(255, 99, 132, 0.5)',
+                        'rgba(54, 162, 235, 0.5)',
+                        'rgba(255, 206, 86, 0.5)',
+                        'rgba(75, 192, 192, 0.5)',
+                        'rgba(153, 102, 255, 0.5)',
+                        'rgba(255, 159, 64, 0.5)'
                     ],
-                    borderColor: 'white',
-                    borderWidth: 2
+                    borderColor: 'rgba(255, 255, 255, 1)',
+                    borderWidth: 1
                 }]
             },
             options: {
-                responsive: true,
-                plugins: {
-                    legend: {
-                        position: 'right'
-                    },
-                    tooltip: {
-                        callbacks: {
-                            label: function(context) {
-                                let label = context.label || '';
-                                let value = context.raw || 0;
-                                return `${label}: ${value}`;
-                            }
-                        }
-                    }
-                }
+                responsive: true
             }
         });
     });
 </script>
+@endpush
+

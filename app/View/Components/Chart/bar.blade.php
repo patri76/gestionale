@@ -5,6 +5,7 @@
     <canvas id="chart-{{ Str::slug($title, '-') }}" class="w-full h-64"></canvas>
 </div>
 
+@push('scripts')
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         const ctx = document.getElementById("chart-{{ Str::slug($title, '-') }}").getContext('2d');
@@ -34,3 +35,4 @@
         });
     });
 </script>
+@endpush
