@@ -18,11 +18,14 @@ return new class extends Migration
             $table->string('nome');
             $table->string('cognome');
             $table->date('data_nascita')->nullable();
+            $table->string('sesso')->nullable();
             $table->string('nazionalita')->nullable();
+            $table->string('occupazione')->nullable();
 
             // Contatti
             $table->string('email');
             $table->string('telefono');
+            $table->string('cellulare')->nullable();
 
             // Dati passaporto
             $table->string('numero_passaporto')->nullable();
@@ -31,11 +34,24 @@ return new class extends Migration
             // Indirizzi
             $table->string('indirizzo_italia')->nullable();
             $table->string('indirizzo_estero')->nullable();
+            $table->string('civico')->nullable();
+            $table->string('cap')->nullable();
+            $table->string('citta')->nullable();
+            $table->string('codice_nazionale')->nullable();
 
             // Codice fiscale e consensi
             $table->string('codice_fiscale')->nullable();
             $table->boolean('consenso_privacy')->default(false);
             $table->boolean('consenso_marketing')->default(false);
+            $table->boolean('datapolicy')->default(false);
+            $table->boolean('newsletter')->default(false);
+            $table->boolean('liberatoria_foto')->default(false);
+            $table->boolean('permesso_uscita')->default(false);
+            $table->boolean('consenso_genitori')->default(false);
+            $table->boolean('esenzione_attivita')->default(false);
+
+            // Note
+            $table->text('note')->nullable();
 
             // Associazione a classe
             $table->foreignId('classe_id')->nullable()->constrained('classes')->onDelete('set null');
